@@ -31,6 +31,8 @@ CREATE TABLE IF NOT EXISTS ingressos (
     assento VARCHAR(10) NOT NULL,
     valor DECIMAL(6, 2) NOT NULL,
     data_sessao DATETIME NOT NULL,
+    CONSTRAINT uq_assento_sessao
+    UNIQUE (id_filme, assento, data_sessao),
     CONSTRAINT fk_ingresso_cliente
         FOREIGN KEY (id_cliente) REFERENCES clientes(id_cliente)
         ON DELETE RESTRICT
